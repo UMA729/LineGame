@@ -26,6 +26,7 @@ public class StrokeController : MonoBehaviour
     [SerializeField] float weightGaugeCost = 10f;
 
     float weightScale = 1f;
+    [SerializeField] string[] WeightTag;
 
 
     //共通用関数
@@ -105,6 +106,7 @@ public class StrokeController : MonoBehaviour
         // この球が使ったゲージ量
         public float usedGauge;
 
+        public string[] tag;
         //縮小フラグ
         public bool isReducing = false;
     }
@@ -173,7 +175,7 @@ public class StrokeController : MonoBehaviour
             if (currentLine != null)
             {
                 currentLine.released = true;
-                currentLine.releaseTime = Time.time + 1f;
+                currentLine.releaseTime = Time.time + 1f; 
                 currentLine.initialPointCount = currentLine.points.Count;
                 currentLine.colliderDirty = true;
             }
@@ -197,14 +199,9 @@ public class StrokeController : MonoBehaviour
             currentWeight = null;
         }
 
-        if (currentLine != null)
-        {
-            _updateAllLines();
-        }
-        if (currentWeight != null)
-        {
-            _updateweight();
-        }
+        _updateAllLines();
+
+        _updateweight();
     }    
 
     //線オブジェクト作成
@@ -257,7 +254,6 @@ public class StrokeController : MonoBehaviour
 
         if (hit != null)
         {
-            Debug.Log("block hit: " + hit.name);
             return;
         }
 
@@ -281,12 +277,14 @@ public class StrokeController : MonoBehaviour
 
         Rigidbody2D rb = null;
 
+        string[] str = WeightTag;
 
         currentWeight =
             new WeightData()
             {
                 obj = obj,
                 rb = rb,
+                tag = str,
                 scale = 1f,
             };
 
@@ -314,7 +312,7 @@ public class StrokeController : MonoBehaviour
 
         if (hit != null)
         {
-            Debug.Log("block hit: " + hit.name);
+           
             return;
         }
 
@@ -329,7 +327,6 @@ public class StrokeController : MonoBehaviour
 
             float cost = dist * gaugeCostPerUnit;
 
-            Debug.Log(currentLine.totalLength);
 
             if (currentGauge < cost)
             {
@@ -350,17 +347,18 @@ public class StrokeController : MonoBehaviour
             new TimedPoint(worldPos, Time.time)
         );
     }
-
+    
     //線処理更新
     private void _updateAllLines()
     {
         float now = Time.time;
         bool isDrawing = Input.GetMouseButton(0);
 
-
         for (int l = lines.Count - 1; l >= 0; l--)
         {
             var line = lines[l];
+
+            Debug.Log(line == currentLine);
 
             if (line.life <= 0f)
             {
@@ -389,6 +387,7 @@ public class StrokeController : MonoBehaviour
             //線削除処理
             if (line.released)
             {
+
                 float elapsed = now - line.releaseTime;
                 float t = elapsed / lifeTime;
 
@@ -399,6 +398,8 @@ public class StrokeController : MonoBehaviour
 
                 int removeNow = targetRemoveCount - line.removedCount;
                 removeNow = Mathf.Clamp(removeNow, 0, line.points.Count);
+
+ 
 
                 if (removeNow > 0)
                 {
@@ -470,6 +471,8 @@ public class StrokeController : MonoBehaviour
         if (currentGauge <= 0)
             return;
 
+        Debug.Log(lines.Count);
+
         // 最大ならゲージを消費しない
         if (currentWeight.scale >= weightMaxScale)
         {
@@ -534,7 +537,7 @@ public class StrokeController : MonoBehaviour
 
             if (Time.time >= line.recoverStartTime)
             {
-                currentGauge += currentLine.recoverSpeed * Time.deltaTime;
+                currentGauge += line.recoverSpeed * Time.deltaTime;
 
                 currentGauge = Mathf.Clamp(
                     currentGauge,

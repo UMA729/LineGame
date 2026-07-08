@@ -56,6 +56,9 @@ MonoBehaviour:
   weightMaxScale: 1.75
   weightMaxMass: 2
   weightGaugeCost: 20
+  WeightTag:
+  - Line
+  - Wall
   maxGauge: 50
   gaugeCostPerUnit: 2
   gauge: {fileID: 8985443604875789094, guid: 3393308c169a96d419c380c04e081c93, type: 3}

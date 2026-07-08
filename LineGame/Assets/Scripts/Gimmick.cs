@@ -27,6 +27,9 @@ public class Gimmick : MonoBehaviour
     float origine_pos;
     [SerializeField] private float press_limmit = 0;
 
+    [Header("ボタンギミック")]
+    bool isPushing = false;
+
     [Header("ギミック作動時間")]
     public float gimmick_shoot_time = 0;
     float gimmick_count_time = 0;
@@ -58,6 +61,10 @@ public class Gimmick : MonoBehaviour
         else if (gameObject.CompareTag("Hole"))
         {
             Hole();
+        }
+        else if (gameObject.CompareTag("Button"))
+        {
+            Button();
         }
     }
 
@@ -144,6 +151,12 @@ public class Gimmick : MonoBehaviour
         }
 
     }
+
+    private void Button()
+    {
+        
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player") && gameObject.CompareTag("Hole"))
