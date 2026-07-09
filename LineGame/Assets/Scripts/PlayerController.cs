@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed = 3f;
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private int HP = 3;
+    [SerializeField] string[] jumpTag;
 
     private Vector2 moveInput = Vector2.zero;
 
@@ -82,17 +83,28 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Arrow") || collision.gameObject.CompareTag("Line"))
+        foreach (string tag in jumpTag)
         {
-            foreach (ContactPoint2D point in collision.contacts)
+            if (collision.gameObject.CompareTag(tag))
             {
-                // 上から乗った場合だけ
-                if (point.normal.y > 0.5f)
+                foreach (ContactPoint2D point in collision.contacts)
                 {
-                    isGrounded = true;
+                    // 上から乗った場合だけ
+                    if (point.normal.y > 0.5f)
+                    {
+                        isGrounded = true;
+                    }
                 }
             }
+         
         }
+        //if (collision.gameObject.CompareTag("Ground") ||
+        //    collision.gameObject.CompareTag("Arrow")  || 
+        //    collision.gameObject.CompareTag("Line")   ||
+        //    collision.gameObject.CompareTag("Seasaw"))
+        //{
+           
+        //}
         if (collision.gameObject.CompareTag("Cage") && GameManager.instance.hasKey)
         {
             GameManager.instance.hasKey = false;
@@ -101,11 +113,11 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground") ||
-            collision.gameObject.CompareTag("Arrow")  || 
-            collision.gameObject.CompareTag("Line"))
+        foreach (string tag in jumpTag)
         {
-            isGrounded = false;
+            if (collision.gameObject.CompareTag(tag))
+            {
+                isGrounded = false;
         }
     }
 }

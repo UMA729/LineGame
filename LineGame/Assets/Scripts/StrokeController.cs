@@ -130,6 +130,10 @@ public class StrokeController : MonoBehaviour
 
     void Update()
     {
+        _updateAllLines();
+
+        _updateweight();
+
         _updateLineGauge();
 
         _updateWeightGauge();
@@ -172,7 +176,7 @@ public class StrokeController : MonoBehaviour
         {
             now_stroke = false;
 
-            if (currentLine != null)
+            if (currentLine != null　&& type == LineType.Normal)
             {
                 currentLine.released = true;
                 currentLine.releaseTime = Time.time + 1f; 
@@ -180,7 +184,7 @@ public class StrokeController : MonoBehaviour
                 currentLine.colliderDirty = true;
             }
 
-            if (currentWeight != null)
+            if (currentWeight != null && type == LineType.Weight)
             {
                 currentWeight.released = true;
 
@@ -199,9 +203,6 @@ public class StrokeController : MonoBehaviour
             currentWeight = null;
         }
 
-        _updateAllLines();
-
-        _updateweight();
     }    
 
     //線オブジェクト作成
@@ -358,7 +359,6 @@ public class StrokeController : MonoBehaviour
         {
             var line = lines[l];
 
-            Debug.Log(line == currentLine);
 
             if (line.life <= 0f)
             {
@@ -460,7 +460,6 @@ public class StrokeController : MonoBehaviour
     void _updateweight()
     {
 
-
         if (!Input.GetMouseButton(0))
             return;
 
@@ -470,8 +469,6 @@ public class StrokeController : MonoBehaviour
 
         if (currentGauge <= 0)
             return;
-
-        Debug.Log(lines.Count);
 
         // 最大ならゲージを消費しない
         if (currentWeight.scale >= weightMaxScale)
@@ -537,7 +534,7 @@ public class StrokeController : MonoBehaviour
 
             if (Time.time >= line.recoverStartTime)
             {
-                currentGauge += line.recoverSpeed * Time.deltaTime;
+                currentGauge += currentLine.recoverSpeed * Time.deltaTime;
 
                 currentGauge = Mathf.Clamp(
                     currentGauge,
@@ -605,7 +602,6 @@ public class StrokeController : MonoBehaviour
                             currentGauge,
                             0,
                             maxGauge);
-
 
                     gauge.fillAmount =
                         currentGauge / maxGauge;

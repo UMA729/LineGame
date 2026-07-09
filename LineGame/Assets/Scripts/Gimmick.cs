@@ -29,6 +29,8 @@ public class Gimmick : MonoBehaviour
 
     [Header("ボタンギミック")]
     bool isPushing = false;
+    bool GimmickActive = false;
+    [SerializeField] GameObject ButtonGimmick;
 
     [Header("ギミック作動時間")]
     public float gimmick_shoot_time = 0;
@@ -159,6 +161,7 @@ public class Gimmick : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (collision.gameObject.CompareTag("Player") && gameObject.CompareTag("Hole"))
         {
             isOpen = true;
