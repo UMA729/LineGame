@@ -25,4 +25,12 @@ public class WeightCollision : MonoBehaviour
         // –³‹ƒ^ƒOˆÈŠO‚ÉG‚ê‚Ä‚¢‚éŠÔ‚¾‚¯k‚Ş
         weight_data.isReducing = !ignoreTag;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("LineOut"))
+        {
+            weight_data.isInfrate = false;
+        }
+    }
 }

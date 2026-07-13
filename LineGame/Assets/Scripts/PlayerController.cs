@@ -118,6 +118,7 @@ public class PlayerController : MonoBehaviour
             if (collision.gameObject.CompareTag(tag))
             {
                 isGrounded = false;
+            }
         }
     }
 }

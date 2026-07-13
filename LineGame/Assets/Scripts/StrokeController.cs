@@ -109,6 +109,7 @@ public class StrokeController : MonoBehaviour
         public string[] tag;
         //縮小フラグ
         public bool isReducing = false;
+        public bool isInfrate = true;
     }
 
     List<LineData> lines = new List<LineData>();
@@ -486,17 +487,12 @@ public class StrokeController : MonoBehaviour
         if (currentGauge < cost)
             return;
 
-
         currentGauge -= cost;
-
 
         gauge.fillAmount =
             currentGauge / maxGauge;
 
-
-
         // サイズアップ
-
         currentWeight.scale +=
             weightGrowSpeed *
             Time.deltaTime;
@@ -514,11 +510,8 @@ public class StrokeController : MonoBehaviour
             Vector3.one *
             currentWeight.scale;
 
-
-
         // 質量アップ
-
-        if (currentWeight.rb != null)
+        if (currentWeight.rb != null && currentWeight.isInfrate)
         {
             currentWeight.rb.mass =
                 currentWeight.scale * (weightGaugeCost/2);

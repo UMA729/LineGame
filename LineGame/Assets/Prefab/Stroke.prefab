@@ -54,8 +54,8 @@ MonoBehaviour:
   weightPrefab: {fileID: 7251408146425636860, guid: f9ce148a32c834f4091476cb2618d542, type: 3}
   weightGrowSpeed: 2
   weightMaxScale: 2
-  weightMaxMass: 1
-  weightGaugeCost: 20
+  weightMaxMass: 2
+  weightGaugeCost: 50
   WeightTag:
   - Line
   - Wall

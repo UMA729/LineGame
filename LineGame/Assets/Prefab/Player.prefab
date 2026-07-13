@@ -202,6 +202,11 @@ MonoBehaviour:
   speed: 3
   jumpForce: 5
   HP: 3
+  jumpTag:
+  - Ground
+  - Arrow
+  - Line
+  - Seasaw
   isGrounded: 0
 --- !u!114 &4564417330453881029
 MonoBehaviour:
