@@ -341,6 +341,7 @@ public class StrokeController : MonoBehaviour
 
             currentGauge -= cost;
             currentLine.usedGauge += cost;
+
             currentGauge = Mathf.Clamp(currentGauge, 0f, maxGauge);
             gauge.fillAmount = currentGauge / maxGauge;
 

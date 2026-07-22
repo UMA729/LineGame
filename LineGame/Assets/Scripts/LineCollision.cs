@@ -15,7 +15,7 @@ public class LineCollision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("‚Ô‚Â‚©‚Á‚½");
+        Debug.Log("ï¿½Ô‚Â‚ï¿½ï¿½ï¿½ï¿½ï¿½");
         
         if (collision.gameObject.CompareTag("AttackGimmick"))
         {
@@ -28,7 +28,7 @@ public class LineCollision : MonoBehaviour
 
             if (gimmick != null && gimmick.isPressing)
             {
-                // ˆ—
+                // ï¿½ï¿½ï¿½ï¿½
                 if (line_data.totalLength > 2.0f)
                 {
                     gimmick.isPressing = false;
