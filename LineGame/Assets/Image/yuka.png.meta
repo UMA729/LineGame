@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      yuka_0: -682948201738035180
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

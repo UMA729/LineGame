@@ -8,6 +8,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int HP = 3;
     [SerializeField] string[] jumpTag;
 
+    [SerializeField] private Transform headCheck;
+    [SerializeField] private Transform footCheck;
+
+    [SerializeField] private float checkDistance = 0.1f;
+
+    [SerializeField] private LayerMask ceilingLayer;
+    [SerializeField] private LayerMask groundLayer;
+
     private Vector2 moveInput = Vector2.zero;
 
     private Rigidbody2D rb;
@@ -26,6 +34,15 @@ public class PlayerController : MonoBehaviour
         cage = FindAnyObjectByType<Cage>();
         g = FindAnyObjectByType<Gimmick>();
 
+    }
+
+    private void Update()
+    {
+        if(IsCrushed())
+        {
+            Destroy(this.gameObject);
+            SP.PlayerSpawn();
+        }
     }
     private void FixedUpdate()
     {
@@ -55,6 +72,23 @@ public class PlayerController : MonoBehaviour
             rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
             Debug.Log("Jumping");
         }
+    }
+
+    bool IsCrushed()
+    {
+        bool hitHead = Physics2D.Raycast(
+            headCheck.position,
+            Vector2.up,
+            checkDistance,
+            ceilingLayer);
+
+        bool hitFoot = Physics2D.Raycast(
+            footCheck.position,
+            Vector2.down,
+            checkDistance,
+            groundLayer);
+
+        return hitHead && hitFoot;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

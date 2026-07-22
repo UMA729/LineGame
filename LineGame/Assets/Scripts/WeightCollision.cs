@@ -7,9 +7,9 @@ public class WeightCollision : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        // LineOut‚Í–³‹
-        if (collision.gameObject.layer == LayerMask.NameToLayer("LineOut"))
-            return;
+        // LineOutï¿½Í–ï¿½ï¿½ï¿½
+        //if (collision.gameObject.layer == LayerMask.NameToLayer("LineOut"))
+        //    return;
 
         bool ignoreTag = false;
 
@@ -22,7 +22,7 @@ public class WeightCollision : MonoBehaviour
             }
         }
 
-        // –³‹ƒ^ƒOˆÈŠO‚ÉG‚ê‚Ä‚¢‚éŠÔ‚¾‚¯k‚Ş
+        // ï¿½ï¿½ï¿½ï¿½ï¿½^ï¿½Oï¿½ÈŠOï¿½ÉGï¿½ï¿½Ä‚ï¿½ï¿½ï¿½Ô‚ï¿½ï¿½ï¿½ï¿½kï¿½ï¿½
         weight_data.isReducing = !ignoreTag;
     }
 

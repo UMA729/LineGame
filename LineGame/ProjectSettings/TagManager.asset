@@ -15,6 +15,7 @@ TagManager:
   - Hole
   - Line
   - Seasaw
+  - Weight
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - LineLayer
   - Hole
   - LineOut
-  - 
+  - Ceilling
   - 
   - 
   - 

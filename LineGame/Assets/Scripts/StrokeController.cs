@@ -89,6 +89,7 @@ public class StrokeController : MonoBehaviour
         public float recoverSpeed;
         public bool recovering = false;
 
+        public float usedGauge;
     }
 
     [System.Serializable]
@@ -121,7 +122,7 @@ public class StrokeController : MonoBehaviour
 
     public bool now_stroke = false;
 
-    LineType type;
+    public LineType type;
     void Start()
     {
         currentGauge = maxGauge;
@@ -339,6 +340,7 @@ public class StrokeController : MonoBehaviour
             currentLine.totalLength += dist;
 
             currentGauge -= cost;
+            currentLine.usedGauge += cost;
             currentGauge = Mathf.Clamp(currentGauge, 0f, maxGauge);
             gauge.fillAmount = currentGauge / maxGauge;
 
