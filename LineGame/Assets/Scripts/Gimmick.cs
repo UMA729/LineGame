@@ -30,6 +30,8 @@ public class Gimmick : MonoBehaviour
     [Header("ボタンギミック")]
     bool isPushing = false;
     bool GimmickActive = false;
+    [SerializeField] private float open_limmit;
+    private float limmit_pos = 0.0f;
     [SerializeField] GameObject ButtonGimmick;
 
     [Header("ギミック作動時間")]
@@ -39,6 +41,13 @@ public class Gimmick : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (ButtonGimmick != null)
+        {
+            if(ButtonGimmick.gameObject.CompareTag("UpDoor"))
+            {
+                
+            }
+        }
         if (gameObject.CompareTag("Hole"))
         {
             leftClose = leftDoor.localRotation;
@@ -156,7 +165,13 @@ public class Gimmick : MonoBehaviour
 
     private void Button()
     {
-        
+        if(isPushing)
+        {
+            if (ButtonGimmick.gameObject.CompareTag("UpDoor"))
+            {
+                ButtonGimmick.transform.position += transform.up * speed * Time.deltaTime;
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -165,6 +180,14 @@ public class Gimmick : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && gameObject.CompareTag("Hole"))
         {
             isOpen = true;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Weight") && gameObject.CompareTag("Button"))
+        {
+            isPushing = true;
         }
     }
 }

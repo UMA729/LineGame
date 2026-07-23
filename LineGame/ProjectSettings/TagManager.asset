@@ -16,6 +16,7 @@ TagManager:
   - Line
   - Seasaw
   - Weight
+  - UpDoor
   layers:
   - Default
   - TransparentFX

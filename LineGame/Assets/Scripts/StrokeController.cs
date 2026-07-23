@@ -190,16 +190,13 @@ public class StrokeController : MonoBehaviour
             {
                 currentWeight.released = true;
 
-                Rigidbody2D rb =
-                currentWeight.obj.AddComponent<Rigidbody2D>();
+                currentWeight.rb.bodyType = RigidbodyType2D.Dynamic;
+                currentWeight.rb.gravityScale = 1;
 
-                rb.linearVelocity = Vector2.zero;
+                currentWeight.rb.linearVelocity = Vector2.zero;
 
-                rb.mass = currentWeight.scale * 20f;
-                rb.gravityScale = 1f;
-
-
-                currentWeight.rb = rb;
+                //rb.mass = currentWeight.scale * 20f;
+                currentWeight.rb.gravityScale = 1f;
             }
 
             currentWeight = null;
@@ -278,7 +275,9 @@ public class StrokeController : MonoBehaviour
             );
 
 
-        Rigidbody2D rb = null;
+        Rigidbody2D rb = obj.AddComponent<Rigidbody2D>();
+        rb.gravityScale = 0;
+        rb.bodyType = RigidbodyType2D.Kinematic;
 
         string[] str = WeightTag;
 
@@ -463,7 +462,10 @@ public class StrokeController : MonoBehaviour
     //重量処理更新
     void _updateweight()
     {
-
+        //if (!currentWeight.isInfrate)
+        //{
+        //    return;
+        //}
         if (!Input.GetMouseButton(0))
             return;
 
@@ -507,18 +509,14 @@ public class StrokeController : MonoBehaviour
                 1f,
                 weightMaxScale
             );
-
-
-        currentWeight.obj.transform.localScale =
-            Vector3.one *
-            currentWeight.scale;
+        
+            currentWeight.obj.transform.localScale =
+                Vector3.one *
+                currentWeight.scale;
 
         // 質量アップ
-        if (currentWeight.rb != null && currentWeight.isInfrate)
-        {
             currentWeight.rb.mass =
-                currentWeight.scale * (weightGaugeCost/2);
-        }
+                currentWeight.scale * 5.0f;
     }
 
     //線分のゲージ管理
