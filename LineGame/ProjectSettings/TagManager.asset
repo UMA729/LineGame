@@ -16,7 +16,7 @@ TagManager:
   - Line
   - Seasaw
   - Weight
-  - UpDoor
+  - Button
   layers:
   - Default
   - TransparentFX
@@ -30,7 +30,7 @@ TagManager:
   - Hole
   - LineOut
   - Ceilling
-  - 
+  - UpDoor
   - 
   - 
   - 

@@ -16,8 +16,11 @@ public class Collision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("入ってはいる");
         if (collision.gameObject.CompareTag("AttackGimmick"))
         {
+        Debug.Log("入る");
+
             Destroy(collision.gameObject);
         }
     }

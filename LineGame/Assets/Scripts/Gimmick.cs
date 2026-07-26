@@ -24,15 +24,15 @@ public class Gimmick : MonoBehaviour
     [Header("プレスギミック")]
     public bool isPressing = true;
     float press_speed = 0;
-    float origine_pos;
+    Vector3 origine_pos;
     [SerializeField] private float press_limmit = 0;
 
     [Header("ボタンギミック")]
     bool isPushing = false;
     bool GimmickActive = false;
-    [SerializeField] private float open_limmit;
-    private float limmit_pos = 0.0f;
     [SerializeField] GameObject ButtonGimmick;
+    [SerializeField] private float open_limmit; 
+    Vector3 startPos;
 
     [Header("ギミック作動時間")]
     public float gimmick_shoot_time = 0;
@@ -45,7 +45,7 @@ public class Gimmick : MonoBehaviour
         {
             if(ButtonGimmick.gameObject.CompareTag("UpDoor"))
             {
-                
+                startPos = ButtonGimmick.transform.position;
             }
         }
         if (gameObject.CompareTag("Hole"))
@@ -55,7 +55,7 @@ public class Gimmick : MonoBehaviour
         }
 
         press_limmit += transform.position.y;
-        origine_pos = transform.position.y;
+        origine_pos = transform.position;
     }
 
     // Update is called once per frame
@@ -95,24 +95,33 @@ public class Gimmick : MonoBehaviour
         
         if (gimmick_count_time > gimmick_shoot_time)
         {
-            //�v���X�O
             if (isPressing)
             {
+                float move =
+                    Vector3.Dot(transform.position - origine_pos, transform.up);
+
                 press_speed = 5.0f;
+
                 transform.position -= transform.up * press_speed * Time.deltaTime;
-                if (transform.position.y < press_limmit)
+
+                if (move < -press_limmit)
                 {
                     isPressing = false;
                 }
             }
-            //�v���X��
+
+
             if (!isPressing)
             {
                 press_speed = 1.0f;
+
                 transform.position += transform.up * press_speed * Time.deltaTime;
-                
-                if(transform.position.y > origine_pos)
-                { 
+
+                float move =
+                    Vector3.Dot(transform.position - origine_pos, transform.up);
+
+                if (move >= 0)
+                {
                     isPressing = true;
                     gimmick_count_time = 0;
                 }
@@ -167,9 +176,16 @@ public class Gimmick : MonoBehaviour
     {
         if(isPushing)
         {
-            if (ButtonGimmick.gameObject.CompareTag("UpDoor"))
+            Debug.Log("上昇中");
+            if (ButtonGimmick.gameObject.layer == LayerMask.NameToLayer("UpDoor"))
             {
-                ButtonGimmick.transform.position += transform.up * speed * Time.deltaTime;
+                float moved =
+                Vector3.Dot(
+                    ButtonGimmick.transform.position - startPos,
+                    ButtonGimmick.transform.up);
+
+                if (moved < open_limmit)
+                ButtonGimmick.transform.position += ButtonGimmick.transform.up * speed * Time.deltaTime;
             }
         }
     }
@@ -185,7 +201,8 @@ public class Gimmick : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Weight") && gameObject.CompareTag("Button"))
+        if (collision.gameObject.CompareTag("Weight") && gameObject.CompareTag("Button") ||
+            collision.gameObject.CompareTag("Player")&&gameObject.CompareTag("Button"))
         {
             isPushing = true;
         }

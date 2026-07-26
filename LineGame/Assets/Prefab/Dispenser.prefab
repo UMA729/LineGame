@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 4864876075729309985, guid: 509d863f8c48b344f80df8c4a493ab28, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -190,4 +190,5 @@ MonoBehaviour:
   isPressing: 1
   press_limmit: 0
   ButtonGimmick: {fileID: 0}
+  open_limmit: 0
   gimmick_shoot_time: 1

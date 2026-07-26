@@ -21,9 +21,4 @@ public class GimmickObj : MonoBehaviour
         // 転がる
         transform.Rotate(0, 0, -rotateSpeed * Time.deltaTime);
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Destroy(gameObject);
-    }
 }

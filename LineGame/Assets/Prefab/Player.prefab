@@ -240,6 +240,7 @@ MonoBehaviour:
   - Arrow
   - Line
   - Seasaw
+  - Button
   headCheck: {fileID: 7169988857412208775}
   footCheck: {fileID: 8617407936558601241}
   checkDistance: 0.1

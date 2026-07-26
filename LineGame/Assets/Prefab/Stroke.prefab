@@ -50,7 +50,7 @@ MonoBehaviour:
   bounceMaterial: {fileID: 0}
   blockLayer:
     serializedVersion: 2
-    m_Bits: 1216
+    m_Bits: 5312
   weightPrefab: {fileID: 7251408146425636860, guid: f9ce148a32c834f4091476cb2618d542, type: 3}
   weightGrowSpeed: 2
   weightMaxScale: 2
@@ -63,5 +63,6 @@ MonoBehaviour:
   maxGauge: 50
   gaugeCostPerUnit: 2
   gauge: {fileID: 8985443604875789094, guid: 3393308c169a96d419c380c04e081c93, type: 3}
-  lifeTime: 1
+  lifeTime: 2
   now_stroke: 0
+  type: 0

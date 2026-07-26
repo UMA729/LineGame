@@ -112,6 +112,8 @@ MonoBehaviour:
   openTime: 1
   isPressing: 1
   press_limmit: -1
+  ButtonGimmick: {fileID: 0}
+  open_limmit: 0
   gimmick_shoot_time: 0
 --- !u!61 &7887203614759746643
 BoxCollider2D:

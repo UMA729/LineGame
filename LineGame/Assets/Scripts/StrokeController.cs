@@ -192,7 +192,6 @@ public class StrokeController : MonoBehaviour
 
                 currentWeight.rb.bodyType = RigidbodyType2D.Dynamic;
                 currentWeight.rb.gravityScale = 1;
-
                 currentWeight.rb.linearVelocity = Vector2.zero;
 
                 //rb.mass = currentWeight.scale * 20f;
