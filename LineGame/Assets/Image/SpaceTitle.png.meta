@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: fc03337ce88476b44b15786ddabc3b3e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5804704669017651131
+    second: SpaceTitle_0
+  - first:
+      213: 2451941160431282671
+    second: SpaceTitle_1
+  - first:
+      213: -6596528616728658084
+    second: SpaceTitle_2
+  - first:
+      213: -2389471498827309322
+    second: SpaceTitle_3
+  - first:
+      213: 5301702069877959848
+    second: SpaceTitle_4
+  - first:
+      213: 4001990884710964446
+    second: SpaceTitle_5
+  - first:
+      213: 9213375402486365497
+    second: SpaceTitle_6
+  - first:
+      213: 3252637337776025631
+    second: SpaceTitle_7
+  - first:
+      213: 4345286922102093410
+    second: SpaceTitle_8
+  - first:
+      213: 2471562128064917881
+    second: SpaceTitle_9
+  - first:
+      213: 4506337845262352519
+    second: SpaceTitle_10
+  - first:
+      213: -6172573287697087049
+    second: SpaceTitle_11
+  - first:
+      213: 5861095481625695542
+    second: SpaceTitle_12
+  - first:
+      213: 6211628219427210723
+    second: SpaceTitle_13
+  - first:
+      213: -8221291003017777187
+    second: SpaceTitle_14
+  - first:
+      213: -8638033210153498196
+    second: SpaceTitle_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SpaceTitle_0
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 488
+        width: 68
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 548c621bbdb817fa0800000000000000
+      internalID: -5804704669017651131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpaceTitle_1
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 476
+        width: 70
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe96aa59e7b070220800000000000000
+      internalID: 2451941160431282671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpaceTitle_2
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 488
+        width: 67
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5f70394c2c6474a0800000000000000
+      internalID: -6596528616728658084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpaceTitle_3
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 488
+        width: 60
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fe5a7fe454e6ded0800000000000000
+      internalID: -2389471498827309322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpaceTitle_4
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 488
+        width: 62
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ac670461fd639940800000000000000
+      internalID: 5301702069877959848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpaceTitle_5
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 486
+        width: 80
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edc5c85918de98730800000000000000
+      internalID: 4001990884710964446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpaceTitle_6
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 480
+        width: 44
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93d758f2d1c7cdf70800000000000000
+      internalID: 9213375402486365497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpaceTitle_7
+      rect:
+        serializedVersion: 2
+        x: 691
+        y: 480
+        width: 62
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f10ff4dec60b32d20800000000000000
+      internalID: 3252637337776025631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpaceTitle_8
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 485
+        width: 80
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 266bb0fee6f8d4c30800000000000000
+      internalID: 4345286922102093410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpaceTitle_9
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 489
+        width: 96
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9713e9b19a0cc4220800000000000000
+      internalID: 2471562128064917881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpaceTitle_10
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 486
+        width: 80
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78003c8056ab98e30800000000000000
+      internalID: 4506337845262352519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpaceTitle_11
+      rect:
+        serializedVersion: 2
+        x: 1058
+        y: 486
+        width: 80
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b500cc6c4d965aa0800000000000000
+      internalID: -6172573287697087049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpaceTitle_12
+      rect:
+        serializedVersion: 2
+        x: 1162
+        y: 484
+        width: 60
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63552f0894bc65150800000000000000
+      internalID: 5861095481625695542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpaceTitle_13
+      rect:
+        serializedVersion: 2
+        x: 1229
+        y: 493
+        width: 43
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e540c774f2243650800000000000000
+      internalID: 6211628219427210723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpaceTitle_14
+      rect:
+        serializedVersion: 2
+        x: 1275
+        y: 492
+        width: 61
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddfa20a146b18ed80800000000000000
+      internalID: -8221291003017777187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpaceTitle_15
+      rect:
+        serializedVersion: 2
+        x: 1339
+        y: 504
+        width: 104
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca906c6cf8a8f1880800000000000000
+      internalID: -8638033210153498196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      SpaceTitle_0: -5804704669017651131
+      SpaceTitle_1: 2451941160431282671
+      SpaceTitle_10: 4506337845262352519
+      SpaceTitle_11: -6172573287697087049
+      SpaceTitle_12: 5861095481625695542
+      SpaceTitle_13: 6211628219427210723
+      SpaceTitle_14: -8221291003017777187
+      SpaceTitle_15: -8638033210153498196
+      SpaceTitle_2: -6596528616728658084
+      SpaceTitle_3: -2389471498827309322
+      SpaceTitle_4: 5301702069877959848
+      SpaceTitle_5: 4001990884710964446
+      SpaceTitle_6: 9213375402486365497
+      SpaceTitle_7: 3252637337776025631
+      SpaceTitle_8: 4345286922102093410
+      SpaceTitle_9: 2471562128064917881
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

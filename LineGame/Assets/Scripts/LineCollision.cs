@@ -3,7 +3,6 @@ using UnityEngine;
 public class LineCollision : MonoBehaviour
 {
     public StrokeController.LineData line_data;
-    Gimmick gimmick;
 
     private void Start()
     {
@@ -15,7 +14,6 @@ public class LineCollision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("�Ԃ�����");
         
         if (collision.gameObject.CompareTag("AttackGimmick"))
         {

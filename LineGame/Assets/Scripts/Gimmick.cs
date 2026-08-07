@@ -29,8 +29,10 @@ public class Gimmick : MonoBehaviour
 
     [Header("ボタンギミック")]
     bool isPushing = false;
-    bool GimmickActive = false;
-    [SerializeField] GameObject ButtonGimmick;
+    bool GimmickActive1 = false;
+    bool GimmickActive2 = false;
+    [SerializeField] GameObject ButtonGimmick1;
+    [SerializeField] GameObject ButtonGimmick2;
     [SerializeField] private float open_limmit; 
     Vector3 startPos;
 
@@ -41,11 +43,19 @@ public class Gimmick : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (ButtonGimmick != null)
+        if (ButtonGimmick1 != null)
         {
-            if(ButtonGimmick.gameObject.CompareTag("UpDoor"))
+            if (gameObject.layer == LayerMask.NameToLayer("SwitchLinePlace"))
             {
-                startPos = ButtonGimmick.transform.position;
+                GimmickActive1 = ButtonGimmick1.activeSelf;
+                if(ButtonGimmick2 != null)
+                {
+                    GimmickActive2 = ButtonGimmick2.activeSelf;
+                }
+            }
+            else if (gameObject.layer == LayerMask.NameToLayer("UpDoor"))
+            {
+                startPos = ButtonGimmick1.transform.position;
             }
         }
         if (gameObject.CompareTag("Hole"))
@@ -54,8 +64,11 @@ public class Gimmick : MonoBehaviour
             rightClose = rightDoor.localRotation;
         }
 
-        press_limmit += transform.position.y;
-        origine_pos = transform.position;
+        if (gameObject.CompareTag("Press"))
+        {
+            press_limmit += transform.position.y;
+            origine_pos = transform.position;
+        }
     }
 
     // Update is called once per frame
@@ -174,18 +187,48 @@ public class Gimmick : MonoBehaviour
 
     private void Button()
     {
-        if(isPushing)
+        if (ButtonGimmick1 != null)
         {
-            Debug.Log("上昇中");
-            if (ButtonGimmick.gameObject.layer == LayerMask.NameToLayer("UpDoor"))
-            {
-                float moved =
-                Vector3.Dot(
-                    ButtonGimmick.transform.position - startPos,
-                    ButtonGimmick.transform.up);
 
-                if (moved < open_limmit)
-                ButtonGimmick.transform.position += ButtonGimmick.transform.up * speed * Time.deltaTime;
+            if (this.gameObject.layer == LayerMask.NameToLayer("UpDoor"))
+            {
+                if (isPushing)
+                {
+                    speed = 3.0f;
+                    float moved =
+                    Vector3.Dot(
+                        ButtonGimmick1.transform.position - startPos,
+                        ButtonGimmick1.transform.up);
+
+                    if (moved < open_limmit)
+                    {
+                        ButtonGimmick1.transform.position += ButtonGimmick1.transform.up * speed * Time.deltaTime;
+
+                        if (ButtonGimmick2 != null)
+                        {
+                            ButtonGimmick2.transform.position += ButtonGimmick2.transform.up * speed * Time.deltaTime;
+                        }
+
+                    }
+                }
+                if (!isPushing)
+                {
+                    speed = 0.5f;
+                    float moved =
+                    Vector3.Dot(
+                        ButtonGimmick1.transform.position - startPos,
+                        ButtonGimmick1.transform.up);
+
+                    if (moved >= 0)
+                    {
+                        ButtonGimmick1.transform.position -= ButtonGimmick1.transform.up * speed * Time.deltaTime;
+
+                        if (ButtonGimmick2 != null)
+                        {
+                            ButtonGimmick2.transform.position -= ButtonGimmick2.transform.up * speed * Time.deltaTime;
+                        }
+                    }
+                }
             }
         }
     }
@@ -199,12 +242,40 @@ public class Gimmick : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Weight") && gameObject.CompareTag("Button") ||
             collision.gameObject.CompareTag("Player")&&gameObject.CompareTag("Button"))
         {
             isPushing = true;
+
+            if (this.gameObject.layer == LayerMask.NameToLayer("SwitchLinePlace"))
+            {
+                ButtonGimmick1.SetActive(!GimmickActive1);
+
+                if (ButtonGimmick2 != null)
+                {
+                    ButtonGimmick2.SetActive(!GimmickActive2);                    
+                }
+            }
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Weight") && gameObject.CompareTag("Button") ||
+            collision.gameObject.CompareTag("Player") && gameObject.CompareTag("Button"))
+        {
+            isPushing = false;
+            if (this.gameObject.layer == LayerMask.NameToLayer("SwitchLinePlace"))
+            {
+                Debug.Log("入ってはいますよ");
+                ButtonGimmick1.SetActive(GimmickActive1);
+
+                if (ButtonGimmick2 != null)
+                {
+                    ButtonGimmick2.SetActive(GimmickActive2);
+                }
+            }
         }
     }
 }

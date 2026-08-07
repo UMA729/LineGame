@@ -53,15 +53,15 @@ MonoBehaviour:
     m_Bits: 5312
   weightPrefab: {fileID: 7251408146425636860, guid: f9ce148a32c834f4091476cb2618d542, type: 3}
   weightGrowSpeed: 2
-  weightMaxScale: 2
-  weightMaxMass: 2
-  weightGaugeCost: 50
+  weightMaxScale: 1.2
+  weightMaxMass: 30
+  weightGaugeCost: 60
   WeightTag:
   - Line
   - Wall
   - Seasaw
   maxGauge: 50
-  gaugeCostPerUnit: 2
+  gaugeCostPerUnit: 4
   gauge: {fileID: 8985443604875789094, guid: 3393308c169a96d419c380c04e081c93, type: 3}
   lifeTime: 2
   now_stroke: 0

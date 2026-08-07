@@ -102,15 +102,12 @@ public class StrokeController : MonoBehaviour
 
         public bool released;
 
-        public float recoverAmount;
-
-        // この球が使ったゲージ量
         public float usedGauge;
 
-        public string[] tag;
-        //縮小フラグ
-        public bool isReducing = false;
-        public bool isInfrate = true;
+        public float lifeTime = 3.5f; // 消えるまでの時間
+        public float destroyTimer;
+
+        public bool isDestroying = false;
     }
 
     List<LineData> lines = new List<LineData>();
@@ -170,6 +167,11 @@ public class StrokeController : MonoBehaviour
         {
             if (Input.GetMouseButton(0) && type == LineType.Normal)
             {
+                if (currentLine == null)
+                {
+                    _createLine();
+                }
+
                 _addPoint();
             }
         }
@@ -207,7 +209,8 @@ public class StrokeController : MonoBehaviour
     private void _createLine()
     {
         GameObject obj = new GameObject("Line");
-        obj.tag = "Line";
+        obj.tag = "Ground";
+        obj.layer = LayerMask.NameToLayer("Ground");
         obj.transform.SetParent(transform);
 
         LineRenderer lr = obj.AddComponent<LineRenderer>();
@@ -218,6 +221,10 @@ public class StrokeController : MonoBehaviour
         lr.startWidth = lineWidth;
         lr.endWidth = lineWidth;
         lr.positionCount = 0;
+
+
+        lr.sortingLayerName = "Line";
+        lr.sortingOrder = 1;
 
         Rigidbody2D rb = obj.AddComponent<Rigidbody2D>();
         rb.bodyType = RigidbodyType2D.Kinematic;
@@ -285,8 +292,7 @@ public class StrokeController : MonoBehaviour
             {
                 obj = obj,
                 rb = rb,
-                tag = str,
-                scale = 1f,
+                scale = 0.1f,
             };
 
         obj.AddComponent<WeightCollision>().weight_data = currentWeight;
@@ -313,7 +319,13 @@ public class StrokeController : MonoBehaviour
 
         if (hit != null)
         {
-           
+            currentLine.released = true;
+            currentLine.releaseTime = Time.time + 1f;
+            currentLine.initialPointCount = currentLine.points.Count;
+            currentLine.colliderDirty = true;
+
+            currentLine = null;
+
             return;
         }
 
@@ -505,7 +517,7 @@ public class StrokeController : MonoBehaviour
         currentWeight.scale =
             Mathf.Clamp(
                 currentWeight.scale,
-                1f,
+                0.3f,
                 weightMaxScale
             );
         
@@ -515,7 +527,7 @@ public class StrokeController : MonoBehaviour
 
         // 質量アップ
             currentWeight.rb.mass =
-                currentWeight.scale * 5.0f;
+                currentWeight.scale * weightMaxMass;
     }
 
     //線分のゲージ管理
@@ -551,57 +563,34 @@ public class StrokeController : MonoBehaviour
         {
             WeightData weight = weights[i];
 
-            if (!weight.isReducing)
+
+            if (!weight.isDestroying)
                 continue;
 
-            if (weight.released)
+
+            weight.destroyTimer += Time.deltaTime;
+
+
+            if (weight.destroyTimer >= weight.lifeTime)
             {
-                // 徐々に小さくする
-                weight.scale -=
-                    Time.deltaTime;
+                Destroy(weight.obj);
 
 
-                weight.scale =
+                // 使用した分だけ回復
+                currentGauge += weight.usedGauge;
+
+                currentGauge =
                     Mathf.Clamp(
-                        weight.scale,
+                        currentGauge,
                         0,
-                        weight.scale
-                    );
+                        maxGauge);
 
 
-                weight.obj.transform.localScale =
-                    Vector3.one * weight.scale;
+                gauge.fillAmount =
+                    currentGauge / maxGauge;
 
 
-                // 質量減少
-                weight.rb.mass =
-                Mathf.Pow(
-                    weight.scale,
-                    3
-                ) * weightMaxMass;
-             
-
-                // 完全消滅
-                if (weight.scale <= 0)
-                {
-                    Destroy(weight.obj);
-
-
-                    // ゲージ回復
-                    currentGauge += weight.usedGauge;
-
-                    currentGauge =
-                        Mathf.Clamp(
-                            currentGauge,
-                            0,
-                            maxGauge);
-
-                    gauge.fillAmount =
-                        currentGauge / maxGauge;
-
-
-                    weights.RemoveAt(i);
-                }
+                weights.RemoveAt(i);
             }
         }
     }

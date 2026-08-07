@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5270325007248197466}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Seesaw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 2092692984340963506}
   - component: {fileID: 4076872928846842430}
   - component: {fileID: 6231195279197261978}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Board
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7072400704900779203, guid: 532ae81e84e341b4287cb57ac24d5e69, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -232,7 +232,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1975528001682039200}
   - component: {fileID: 607772833815541022}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}

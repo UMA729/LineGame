@@ -1,5 +1,7 @@
+using System.Drawing;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,9 +22,9 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
     public bool isGrounded;
+    bool onSeesaw = false;
 
     StrokeController SC;
-    StartPosition SP;
     Cage cage;
     Gimmick g;
 
@@ -30,32 +32,53 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         SC = FindAnyObjectByType<StrokeController>();
-        SP = FindAnyObjectByType<StartPosition>();
-        cage = FindAnyObjectByType<Cage>();
+        //cage = FindAnyObjectByType<Cage>();
         g = FindAnyObjectByType<Gimmick>();
 
     }
 
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.R)) 
+        {
+            Die();
+        }
         if(IsCrushed())
         {
-            Destroy(this.gameObject);
-            SP.PlayerSpawn();
+            Die();
         }
+       
     }
     private void FixedUpdate()
     {
-        if (SC.now_stroke)
-            return;
+        Vector2 velocity = rb.linearVelocity;
 
-        if (Mathf.Abs(moveInput.x) > 0)
+        if (onSeesaw)
         {
-            rb.linearVelocity = new Vector2(
-                moveInput.x * speed,
-                rb.linearVelocity.y
-            );
+            // 入力がない時は横速度を止める
+            if (moveInput.x == 0)
+            {
+                velocity.x = 0;
+            }
+            else
+            {
+                velocity.x = moveInput.x * speed;
+            }
         }
+        else if (Mathf.Abs(moveInput.x) > 0)
+        {
+            velocity.x = moveInput.x * speed;
+        }
+
+        rb.linearVelocity = velocity;
+
+        //  else if (Mathf.Abs(moveInput.x) > 0)
+        //{
+        //    rb.linearVelocity = new Vector2(
+        //        moveInput.x * speed,
+        //        rb.linearVelocity.y
+        //    );
+        //}
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -76,32 +99,45 @@ public class PlayerController : MonoBehaviour
 
     bool IsCrushed()
     {
-        bool hitHead = Physics2D.Raycast(
+        RaycastHit2D headHit = Physics2D.Raycast(
             headCheck.position,
             Vector2.up,
             checkDistance,
             ceilingLayer);
 
-        bool hitFoot = Physics2D.Raycast(
+        RaycastHit2D footHit = Physics2D.Raycast(
             footCheck.position,
             Vector2.down,
             checkDistance,
             groundLayer);
 
-        return hitHead && hitFoot;
+        //Debug.Log($"頭:{headHit.collider} 足:{footHit.collider}");
+
+        if (!headHit || !footHit)
+            return false;
+
+        Gimmick gimmick = headHit.collider.GetComponentInParent<Gimmick>();
+
+        Debug.Log($"Gimmick:{gimmick}");
+        Debug.Log($"isPressing:{gimmick?.isPressing}");
+
+        return gimmick != null && gimmick.isPressing;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
+        if (collision.gameObject.CompareTag("Death"))
+        {
+            Die();
+        }
         if (collision.gameObject.CompareTag("AttackGimmick"))
         {
             Destroy(collision.gameObject);
             --HP;
             if (HP == 0)
             {
-                SP.PlayerSpawn();
-                Destroy(this.gameObject);
-                HP = 3;
+               Die();
             }
         }
         if (collision.gameObject.CompareTag("Key"))
@@ -115,36 +151,61 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void Die()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     private void OnCollisionStay2D(Collision2D collision)
     {
-        foreach (string tag in jumpTag)
+        //foreach (string tag in jumpTag)
+        //{
+        //    if (collision.gameObject.CompareTag(tag))
+        //    {
+        //        foreach (ContactPoint2D point in collision.contacts)
+        //        {
+        //            // 上から乗った場合だけ
+        //            if (point.normal.y > 0.2f)
+        //            {
+        //                isGrounded = true;
+        //            }
+        //        }
+        //    }
+        //}
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Seasaw"))
         {
-            if (collision.gameObject.CompareTag(tag))
+            onSeesaw = true;
+        }
+
+        if (collision.gameObject.CompareTag("Ground") ||
+            collision.gameObject.CompareTag("Button") ||
+            collision.gameObject.CompareTag("Press") )
+        {
+            foreach (ContactPoint2D point in collision.contacts)
             {
-                foreach (ContactPoint2D point in collision.contacts)
+                // 上から乗った場合だけ
+                if (point.normal.y > 0.2f)
                 {
-                    // 上から乗った場合だけ
-                    if (point.normal.y > 0.5f)
-                    {
-                        isGrounded = true;
-                    }
+                    isGrounded = true;
                 }
             }
-         
         }
-        //if (collision.gameObject.CompareTag("Ground") ||
-        //    collision.gameObject.CompareTag("Arrow")  || 
-        //    collision.gameObject.CompareTag("Line")   ||
-        //    collision.gameObject.CompareTag("Seasaw"))
-        //{
-           
-        //}
+
         if (collision.gameObject.CompareTag("Cage") && GameManager.instance.hasKey)
         {
-            GameManager.instance.hasKey = false;
-            cage.isOpen = true;
+            //cage.isOpen = true;
+
+            Cage cage = collision.collider.GetComponent<Cage>();
+
+            if (cage != null && !cage.isOpen)
+            {
+                GameManager.instance.hasKey = false;
+                cage.isOpen = true;
+            }
         }
     }
+
     private void OnCollisionExit2D(Collision2D collision)
     {
         foreach (string tag in jumpTag)
@@ -154,5 +215,11 @@ public class PlayerController : MonoBehaviour
                 isGrounded = false;
             }
         }
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Seasaw"))
+        {
+            onSeesaw = false;
+        }
     }
+
 }

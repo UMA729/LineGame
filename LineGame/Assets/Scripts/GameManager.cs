@@ -9,10 +9,14 @@ public class GameManager : MonoBehaviour
 
     public int stageNum = 0;
     public int continueNum = 0;
+    public bool isPaused = false;
     public bool hasKey = false;
+
+    [SerializeField]GameObject PauseCanvas;
 
     public void Awake()
     {
+
         Application.targetFrameRate = 60; // ‰Šúó‘Ô‚Í-1‚É‚È‚Á‚Ä‚¢‚é
 
         if (instance == null)
@@ -23,6 +27,15 @@ public class GameManager : MonoBehaviour
         else
         {
             Destroy(this.gameObject);
+        }
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && PauseCanvas != null)
+        {
+            PauseCanvas.gameObject.SetActive(true);
+            GameManager.instance.isPaused = true;
         }
     }
 }

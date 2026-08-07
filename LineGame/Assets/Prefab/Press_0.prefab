@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2164393994253747904}
   - component: {fileID: 1336492011783954609}
   - component: {fileID: 7887203614759746643}
+  - component: {fileID: -5536318981161208137}
   m_Layer: 0
   m_Name: Press_0
   m_TagString: Press
@@ -114,6 +115,7 @@ MonoBehaviour:
   press_limmit: -1
   ButtonGimmick: {fileID: 0}
   open_limmit: 0
+  out_place: {fileID: 0}
   gimmick_shoot_time: 0
 --- !u!61 &7887203614759746643
 BoxCollider2D:
@@ -161,6 +163,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.28, y: 0.97099835}
   m_EdgeRadius: 0
+--- !u!114 &-5536318981161208137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732297849481401427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79af00d02e96a614a9e93012bb98fbba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2122509028254224890
 GameObject:
   m_ObjectHideFlags: 0

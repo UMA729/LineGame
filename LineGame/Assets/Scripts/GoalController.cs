@@ -22,6 +22,7 @@ public class GoalController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            GameManager.instance.hasKey = false;
             SceneManager.LoadScene(scene_name);
         }
     }

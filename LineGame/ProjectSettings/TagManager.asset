@@ -17,6 +17,7 @@ TagManager:
   - Seasaw
   - Weight
   - Button
+  - Death
   layers:
   - Default
   - TransparentFX
@@ -31,8 +32,8 @@ TagManager:
   - LineOut
   - Ceilling
   - UpDoor
-  - 
-  - 
+  - SwitchLinePlace
+  - Seasaw
   - 
   - 
   - 

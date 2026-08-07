@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 2067171125934071007}
   - component: {fileID: 717243908853107411}
   - component: {fileID: 7504619881309042106}
+  - component: {fileID: 3254155320909077652}
   m_Layer: 0
   m_Name: button
-  m_TagString: Untagged
+  m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,9 +77,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 2530564911472380330, guid: d9f3638b70739474cbce803f97094c21, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.039443493, g: 0, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -134,6 +135,32 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.92, y: 0.32}
   m_EdgeRadius: 0
+--- !u!114 &3254155320909077652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479778585093557214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 545167260dfe8f341a085737c30e1fe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Gummick: {fileID: 0}
+  spawnPoint: {fileID: 0}
+  leftDoor: {fileID: 0}
+  rightDoor: {fileID: 0}
+  openAngle: 90
+  speed: 3
+  isOpen: 0
+  openTime: 1
+  isPressing: 1
+  press_limmit: 0
+  ButtonGimmick1: {fileID: 0}
+  ButtonGimmick2: {fileID: 0}
+  open_limmit: 0
+  gimmick_shoot_time: 0
 --- !u!1 &5798248872533514887
 GameObject:
   m_ObjectHideFlags: 0

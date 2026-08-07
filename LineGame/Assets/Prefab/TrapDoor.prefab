@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4779605904352698955}
   m_Layer: 0
   m_Name: RightDoor
-  m_TagString: Hole
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 3580250176236638018, guid: 8adecb20998c3a848ab7c11624927d5e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 5956017595336440677}
   m_Layer: 0
   m_Name: LeftDoor
-  m_TagString: Hole
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -239,7 +239,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 3006402461787758620, guid: 1b11279c70c2c80479bfbdb5b2cddb6e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -413,6 +413,8 @@ MonoBehaviour:
   openTime: 1
   isPressing: 1
   press_limmit: 0
+  ButtonGimmick: {fileID: 0}
+  open_limmit: 0
   gimmick_shoot_time: 0
 --- !u!61 &6556425277121505830
 BoxCollider2D:
